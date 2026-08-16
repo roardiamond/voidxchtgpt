@@ -15,7 +15,6 @@
 </head>
 <body class="bg-void text-gray-100 font-orbitron antialiased min-h-screen">
 
-  <!-- Navbar -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-void/90 backdrop-blur-md border-b border-cyan-500/20">
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
       <a href="index.html" class="text-xl font-black tracking-wider text-cyan-400">VOID<span class="text-purple-400">X</span>HUB</a>
@@ -52,12 +51,10 @@
         <p class="text-gray-400">Select your game and explore available tools</p>
       </div>
 
-      <!-- Search & Filter (client-side) -->
       <div class="mb-8 flex flex-col sm:flex-row gap-4">
         <input type="search" id="tool-search" placeholder="Search tools..." 
-               class="flex-1 px-4 py-3 rounded-xl bg-black/40 border border-cyan-500/30 text-sm focus:border-cyan-400 focus:outline-none"
-               aria-label="Search tools">
-        <select id="tool-filter" class="px-4 py-3 rounded-xl bg-black/40 border border-cyan-500/30 text-sm focus:border-cyan-400 focus:outline-none" aria-label="Filter by category">
+               class="input-field flex-1" aria-label="Search tools">
+        <select id="tool-filter" class="input-field sm:w-48" aria-label="Filter by category">
           <option value="all">All Categories</option>
           <option value="freefire">Free Fire</option>
           <option value="bgmi">BGMI</option>
@@ -67,9 +64,11 @@
       </div>
 
       <div id="tools-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Free Fire -->
+
         <article class="card tool-card" data-category="freefire" data-name="free fire tools">
-          <div class="h-44 bg-gradient-to-br from-orange-600/30 to-pink-900/40 flex items-center justify-center text-5xl">🔥</div>
+          <div class="h-44 overflow-hidden bg-gradient-to-br from-orange-600/30 to-pink-900/40">
+            <img src="images/ff.jpg" alt="Free Fire" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML='<div class=\'h-full flex items-center justify-center text-5xl\'>🔥</div>'">
+          </div>
           <div class="p-5">
             <div class="flex gap-2 mb-2">
               <span class="badge badge-hot">Popular</span>
@@ -77,13 +76,14 @@
             </div>
             <h2 class="text-xl font-bold text-orange-300 mb-1">Free Fire Tools</h2>
             <p class="text-sm text-gray-400 mb-4 line-clamp-2">Hologram, configs, locations, push tools and more for Free Fire / Free Fire Max.</p>
-            <a href="ff.html" class="inline-block w-full text-center py-2.5 rounded-lg bg-gradient-to-r from-orange-500 to-pink-600 text-sm font-bold hover:opacity-90 transition">Open Tools</a>
+            <a href="ff.html" class="btn-primary w-full">Open Tools</a>
           </div>
         </article>
 
-        <!-- BGMI -->
         <article class="card tool-card" data-category="bgmi" data-name="bgmi tools">
-          <div class="h-44 bg-gradient-to-br from-cyan-600/30 to-teal-900/40 flex items-center justify-center text-5xl">💀</div>
+          <div class="h-44 overflow-hidden bg-gradient-to-br from-cyan-600/30 to-teal-900/40">
+            <img src="images/bgmi.jpg" alt="BGMI" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML='<div class=\'h-full flex items-center justify-center text-5xl\'>💀</div>'">
+          </div>
           <div class="p-5">
             <div class="flex gap-2 mb-2">
               <span class="badge badge-live">Live</span>
@@ -91,61 +91,60 @@
             </div>
             <h2 class="text-xl font-bold text-cyan-300 mb-1">BGMI Tools</h2>
             <p class="text-sm text-gray-400 mb-4 line-clamp-2">High FPS configs, OBB and optimization tools for Battlegrounds Mobile India.</p>
-            <a href="bgmi.html" class="inline-block w-full text-center py-2.5 rounded-lg bg-gradient-to-r from-cyan-500 to-teal-600 text-sm font-bold hover:opacity-90 transition">Open Tools</a>
+            <a href="bgmi.html" class="btn-primary w-full">Open Tools</a>
           </div>
         </article>
 
-        <!-- Scrims / Tournaments -->
         <article class="card tool-card" data-category="tournament" data-name="paid scrims tournaments">
-          <div class="h-44 bg-gradient-to-br from-red-600/30 to-orange-900/40 flex items-center justify-center text-5xl">🏆</div>
+          <div class="h-44 overflow-hidden bg-gradient-to-br from-red-600/30 to-orange-900/40">
+            <img src="images/ff-tournament.jpg" alt="Paid Scrims" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML='<div class=\'h-full flex items-center justify-center text-5xl\'>🏆</div>'">
+          </div>
           <div class="p-5">
             <div class="flex gap-2 mb-2">
               <span class="badge badge-tournament">Tournaments</span>
             </div>
             <h2 class="text-xl font-bold text-orange-300 mb-1">Paid Scrims</h2>
             <p class="text-sm text-gray-400 mb-4 line-clamp-2">Daily & weekly paid tournaments for Free Fire and BGMI with cash prizes.</p>
-            <a href="scrims.html" class="inline-block w-full text-center py-2.5 rounded-lg bg-gradient-to-r from-orange-500 to-red-600 text-sm font-bold hover:opacity-90 transition">Join Now</a>
+            <a href="scrims.html" class="btn-primary w-full">Join Now</a>
           </div>
         </article>
 
-        <!-- COD -->
         <article class="card tool-card" data-category="other" data-name="call of duty mobile">
-          <div class="h-44 bg-gradient-to-br from-yellow-600/30 to-amber-900/40 flex items-center justify-center text-5xl">🎯</div>
+          <div class="h-44 overflow-hidden bg-gradient-to-br from-yellow-600/30 to-amber-900/40">
+            <img src="images/cod.jpg" alt="COD Mobile" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML='<div class=\'h-full flex items-center justify-center text-5xl\'>🎯</div>'">
+          </div>
           <div class="p-5">
-            <div class="flex gap-2 mb-2">
-              <span class="text-xs text-gray-500">COD Mobile</span>
-            </div>
+            <div class="flex gap-2 mb-2"><span class="text-xs text-gray-500">COD Mobile</span></div>
             <h2 class="text-xl font-bold text-yellow-300 mb-1">Call of Duty</h2>
             <p class="text-sm text-gray-400 mb-4 line-clamp-2">Tools and configs for Call of Duty Mobile.</p>
-            <a href="cod.html" class="inline-block w-full text-center py-2.5 rounded-lg bg-gradient-to-r from-yellow-500 to-amber-600 text-sm font-bold hover:opacity-90 transition">Open Tools</a>
+            <a href="cod.html" class="btn-primary w-full">Open Tools</a>
           </div>
         </article>
 
-        <!-- Valorant -->
         <article class="card tool-card" data-category="other" data-name="valorant mobile">
-          <div class="h-44 bg-gradient-to-br from-pink-600/30 to-fuchsia-900/40 flex items-center justify-center text-5xl">💜</div>
+          <div class="h-44 overflow-hidden bg-gradient-to-br from-pink-600/30 to-fuchsia-900/40">
+            <img src="images/valo.jpg" alt="Valorant" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML='<div class=\'h-full flex items-center justify-center text-5xl\'>💜</div>'">
+          </div>
           <div class="p-5">
-            <div class="flex gap-2 mb-2">
-              <span class="text-xs text-gray-500">Valorant</span>
-            </div>
+            <div class="flex gap-2 mb-2"><span class="text-xs text-gray-500">Valorant</span></div>
             <h2 class="text-xl font-bold text-pink-300 mb-1">Valorant Mobile</h2>
             <p class="text-sm text-gray-400 mb-4 line-clamp-2">Tools and configs for Valorant Mobile.</p>
-            <a href="valorant.html" class="inline-block w-full text-center py-2.5 rounded-lg bg-gradient-to-r from-pink-500 to-fuchsia-600 text-sm font-bold hover:opacity-90 transition">Open Tools</a>
+            <a href="valorant.html" class="btn-primary w-full">Open Tools</a>
           </div>
         </article>
 
-        <!-- Apex -->
         <article class="card tool-card" data-category="other" data-name="apex legends mobile">
-          <div class="h-44 bg-gradient-to-br from-red-600/30 to-rose-900/40 flex items-center justify-center text-5xl">⚡</div>
+          <div class="h-44 overflow-hidden bg-gradient-to-br from-red-600/30 to-rose-900/40">
+            <img src="images/apex.jpg" alt="Apex" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML='<div class=\'h-full flex items-center justify-center text-5xl\'>⚡</div>'">
+          </div>
           <div class="p-5">
-            <div class="flex gap-2 mb-2">
-              <span class="text-xs text-gray-500">Apex</span>
-            </div>
+            <div class="flex gap-2 mb-2"><span class="text-xs text-gray-500">Apex</span></div>
             <h2 class="text-xl font-bold text-red-300 mb-1">Apex Legends</h2>
             <p class="text-sm text-gray-400 mb-4 line-clamp-2">Coming tools for Apex Legends Mobile.</p>
-            <a href="apex.html" class="inline-block w-full text-center py-2.5 rounded-lg bg-gradient-to-r from-red-500 to-rose-600 text-sm font-bold hover:opacity-90 transition">Open Tools</a>
+            <a href="apex.html" class="btn-primary w-full">Open Tools</a>
           </div>
         </article>
+
       </div>
 
       <p id="no-results" class="hidden text-center text-gray-500 mt-10">No tools match your search.</p>
@@ -168,17 +167,13 @@
       const q = (searchInput.value || '').toLowerCase().trim();
       const cat = filterSelect.value;
       let visible = 0;
-
       cards.forEach(card => {
         const name = card.dataset.name || '';
         const category = card.dataset.category || '';
-        const matchSearch = !q || name.includes(q);
-        const matchCat = cat === 'all' || category === cat;
-        const show = matchSearch && matchCat;
+        const show = (!q || name.includes(q)) && (cat === 'all' || category === cat);
         card.style.display = show ? '' : 'none';
         if (show) visible++;
       });
-
       noResults.classList.toggle('hidden', visible > 0);
     }
 
