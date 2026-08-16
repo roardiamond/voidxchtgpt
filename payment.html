@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment – VOID X HUB</title>
+  <meta name="robots" content="noindex, nofollow">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body class="bg-void text-gray-100 font-orbitron antialiased min-h-screen">
+
+  <header class="border-b border-cyan-500/20">
+    <div class="max-w-lg mx-auto px-4 h-14 flex items-center justify-between">
+      <a href="index.html" class="text-lg font-black text-cyan-400">VOID<span class="text-purple-400">X</span>HUB</a>
+      <a href="tools.html" class="text-sm text-gray-400 hover:text-cyan-300">Cancel</a>
+    </div>
+  </header>
+
+  <main class="max-w-lg mx-auto px-4 py-10">
+    <h1 class="text-2xl font-black text-cyan-300 text-center mb-2">Complete Purchase</h1>
+    <p class="text-center text-xs text-gray-500 mb-8">Credits are added only after server-side confirmation</p>
+
+    <div class="card p-6 mb-6 space-y-3">
+      <div class="flex justify-between text-sm">
+        <span class="text-gray-400">Tool</span>
+        <span id="p-tool" class="font-bold text-white">—</span>
+      </div>
+      <div class="flex justify-between text-sm">
+        <span class="text-gray-400">Type</span>
+        <span id="p-type" class="font-bold capitalize">—</span>
+      </div>
+      <div class="flex justify-between text-sm">
+        <span class="text-gray-400">Brand</span>
+        <span id="p-brand" class="font-bold capitalize">—</span>
+      </div>
+      <div class="flex justify-between text-sm">
+        <span class="text-gray-400">Credits</span>
+        <span id="p-credits" class="font-bold text-pink-400">—</span>
+      </div>
+      <div class="border-t border-white/10 pt-3 flex justify-between">
+        <span class="text-gray-300 font-bold">Amount</span>
+        <span id="p-price" class="text-xl font-black text-cyan-300">—</span>
+      </div>
+    </div>
+
+    <div class="card p-6 mb-6">
+      <h2 class="text-sm font-bold text-cyan-300 mb-3">How to pay</h2>
+      <ol class="text-sm text-gray-400 space-y-2 list-decimal list-inside">
+        <li>Contact support on Telegram with this order summary.</li>
+        <li>Complete payment as instructed by the support team.</li>
+        <li>Share payment proof. Credits / access are unlocked only after verification.</li>
+      </ol>
+      <p class="mt-4 text-xs text-amber-400/90">
+        Do not trust any “payment successful” message on this page alone. Balance changes only after backend confirmation.
+      </p>
+    </div>
+
+    <a href="https://t.me/Voidxhubsupport_bot" target="_blank" rel="noopener"
+       class="btn-primary w-full mb-4">
+      Open Support Bot to Pay
+    </a>
+
+    <a href="dashboard.html" class="block text-center text-sm text-gray-400 hover:text-cyan-300">
+      Go to Dashboard
+    </a>
+  </main>
+
+  <script src="js/auth.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const tool = params.get("tool") || "—";
+    const type = params.get("type") || "—";
+    const brand = params.get("brand") || "—";
+    const credits = params.get("credits") || "—";
+    const price = params.get("price") || "—";
+
+    document.getElementById("p-tool").textContent = tool;
+    document.getElementById("p-type").textContent = type;
+    document.getElementById("p-brand").textContent = brand;
+    document.getElementById("p-credits").textContent = credits + " VxH Cr";
+    document.getElementById("p-price").textContent = "₹" + price;
+  </script>
+</body>
+</html>

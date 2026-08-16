@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Device – VOID X HUB</title>
+  <meta name="robots" content="noindex, nofollow">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body class="bg-void text-gray-100 font-orbitron antialiased min-h-screen">
+
+  <header class="border-b border-cyan-500/20">
+    <div class="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
+      <a href="index.html" class="text-lg font-black text-cyan-400">VOID<span class="text-purple-400">X</span>HUB</a>
+      <a href="tools.html" class="text-sm text-gray-400 hover:text-cyan-300">← Tools</a>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 py-10">
+    <div class="text-center mb-8">
+      <p class="text-xs text-gray-500 mb-2">1 ₹ = 2 VxH Cr</p>
+      <h1 class="text-2xl md:text-3xl font-black text-cyan-300" id="toolTitle">Loading...</h1>
+      <p class="text-sm text-gray-400 mt-2 max-w-xl mx-auto" id="toolDesc"></p>
+    </div>
+
+    <div class="card max-w-md mx-auto mb-10 overflow-hidden">
+      <img id="toolImage" src="" alt="Tool preview" class="w-full h-48 object-cover" onerror="this.style.display='none'">
+    </div>
+
+    <h2 class="text-center text-lg font-bold text-cyan-300 mb-4 tracking-wider">Select Your Device</h2>
+
+    <div class="overflow-x-auto rounded-xl border border-cyan-500/25 mb-10">
+      <table class="device-table">
+        <thead>
+          <tr>
+            <th>Brand</th>
+            <th>Models</th>
+            <th>Public</th>
+            <th>Private</th>
+            <th>Personal</th>
+          </tr>
+        </thead>
+        <tbody id="deviceTable"></tbody>
+      </table>
+    </div>
+
+    <p class="text-center text-xs text-gray-500 mb-6">
+      Credits are deducted only after server-side confirmation. Contact support if payment is stuck.
+    </p>
+
+    <div class="text-center">
+      <a href="tools.html" class="btn-primary">← Back to Tools</a>
+    </div>
+  </main>
+
+  <script src="js/auth.js"></script>
+  <script>
+    const tools = {
+      holo: { title: "Free Fire Hologram", desc: "Full Body Hologram + Drag Headshot", image: "images/holo.jpg" },
+      arrow: { title: "Arrow Location", desc: "Headshot location tool", image: "images/arrow.jpg" },
+      card: { title: "Card Location", desc: "Headshot location tool", image: "images/card.jpg" },
+      laser: { title: "Laser Location", desc: "Headshot location tool", image: "images/laser.jpg" },
+      laser2: { title: "Laser Location 2", desc: "Headshot location tool", image: "images/laser2.jpg" },
+      laser3: { title: "Laser Location 3", desc: "Headshot location tool", image: "images/laser3.jpg" },
+      magic600: { title: "Magic Bullet 600%", desc: "High power – second account recommended", image: "images/magic600.jpg" },
+      shop: { title: "Shop Location", desc: "ESP + headshot tool", image: "images/shop.jpg" },
+      gloo: { title: "Invisible Gloowall", desc: "Special gloo config", image: "images/gloo.jpg" },
+      sensi: { title: "Sensitivity Config", desc: "Best custom sensitivity", image: "images/sensi.jpg" },
+      bgmifps: { title: "BGMI High FPS Config", desc: "Unlock higher FPS on supported devices", image: "images/bgmifps.jpg" },
+      yobb: { title: "BGMI Youtuber OBB", desc: "Youtuber OBB + media files", image: "images/yobb.jpg" },
+      bobb: { title: "BGMI Brutal OBB", desc: "Brutal graphics OBB", image: "images/bobb.jpg" }
+    };
+
+    const pricing = {
+      budget:  { public: 1198, private: 1798, personal: 2598 },
+      mid:     { public: 1798, private: 2598, personal: 3598 },
+      premium: { public: 1998, private: 2998, personal: 3998 }
+    };
+
+    const brands = [
+      { name: "samsung",  type: "premium", models: "S24 Ultra, A55, A54, M35...", img: "images/samsung.jpg" },
+      { name: "motorola", type: "mid",     models: "Edge 50, G85, G84...", img: "images/motorola.jpg" },
+      { name: "iphone",   type: "premium", models: "15 Pro, 14, 13 series...", img: "images/iphone.jpg" },
+      { name: "redmi",    type: "budget",  models: "Note 13, Note 12, 13C...", img: "images/redmi.jpg" },
+      { name: "realme",   type: "budget",  models: "GT 6, Narzo 70, C67...", img: "images/realme.png" },
+      { name: "vivo",     type: "mid",     models: "V30, V29, Y200...", img: "images/vivo.png" },
+      { name: "oppo",     type: "mid",     models: "Reno 12, A78, A59...", img: "images/oppo.png" },
+      { name: "oneplus",  type: "mid",     models: "12, Nord 4, Nord CE 4...", img: "images/oneplus.png" },
+      { name: "poco",     type: "budget",  models: "X6 Pro, F6, M6 Pro...", img: "images/poco.png" },
+      { name: "infinix",  type: "budget",  models: "Note 40, Hot 40...", img: "images/infinix.jpg" },
+      { name: "techno",   type: "budget",  models: "Camon 30, Pova 6...", img: "images/techno.png" },
+      { name: "iqoo",     type: "mid",     models: "Neo 9, Z9...", img: "images/iqoo.jpg" },
+      { name: "nothing",  type: "mid",     models: "Phone (2a), Phone (2)...", img: "images/nothing.jpg" }
+    ];
+
+    const toolKey = new URLSearchParams(window.location.search).get("tool") || "holo";
+    const tool = tools[toolKey] || tools.holo;
+
+    document.getElementById("toolTitle").textContent = tool.title;
+    document.getElementById("toolDesc").textContent = tool.desc;
+    document.getElementById("toolImage").src = tool.image;
+    document.getElementById("toolImage").alt = tool.title;
+
+    const tbody = document.getElementById("deviceTable");
+    let html = "";
+
+    brands.forEach(brand => {
+      const price = pricing[brand.type];
+      const pubRs = Math.round(price.public / 2);
+      const privRs = Math.round(price.private / 2);
+      const persRs = Math.round(price.personal / 2);
+      html += `
+        <tr>
+          <td><img src="${brand.img}" class="brand-img" alt="${brand.name}" onerror="this.style.display='none'"><div class="text-xs mt-1 capitalize">${brand.name}</div></td>
+          <td class="text-left text-xs text-gray-400">${brand.models}</td>
+          <td><a href="payment.html?tool=${toolKey}&type=public&brand=${brand.name}&credits=${price.public}&price=${pubRs}" class="link-btn public-btn">${price.public} Cr</a></td>
+          <td><a href="payment.html?tool=${toolKey}&type=private&brand=${brand.name}&credits=${price.private}&price=${privRs}" class="link-btn private-btn">${price.private} Cr</a></td>
+          <td><a href="payment.html?tool=${toolKey}&type=personal&brand=${brand.name}&credits=${price.personal}&price=${persRs}" class="link-btn personal-btn">${price.personal} Cr</a></td>
+        </tr>`;
+    });
+
+    tbody.innerHTML = html;
+  </script>
+</body>
+</html>
