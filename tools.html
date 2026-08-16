@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tools – VOID X HUB</title>
+  <meta name="description" content="Browse premium tools for Free Fire, BGMI, COD Mobile and more on VOID X HUB.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://voidxhub.in/tools.html">
+  <meta property="og:title" content="Tools – VOID X HUB">
+  <meta property="og:description" content="Browse premium tools for Free Fire, BGMI and more.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body class="bg-void text-gray-100 font-orbitron antialiased min-h-screen">
+
+  <!-- Navbar -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-void/90 backdrop-blur-md border-b border-cyan-500/20">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
+      <a href="index.html" class="text-xl font-black tracking-wider text-cyan-400">VOID<span class="text-purple-400">X</span>HUB</a>
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="index.html" class="text-gray-300 hover:text-cyan-300 transition">Home</a>
+        <a href="tools.html" class="text-cyan-300">Tools</a>
+        <a href="scrims.html" class="text-gray-300 hover:text-cyan-300 transition">Tournaments</a>
+        <a href="dashboard.html" id="nav-dashboard" class="hidden text-gray-300 hover:text-cyan-300 transition">Dashboard</a>
+        <a href="login.html" id="nav-login" class="px-4 py-2 rounded-lg border border-cyan-500/50 text-cyan-300 hover:bg-cyan-500/10 transition">Login</a>
+        <a href="register.html" id="nav-register" class="px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-purple-600 text-black font-bold hover:opacity-90 transition">Register</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden p-2 text-cyan-400" aria-label="Open menu" aria-expanded="false">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </nav>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-cyan-500/20 bg-void/95">
+      <div class="px-4 py-4 space-y-3 text-sm">
+        <a href="index.html" class="block text-gray-300">Home</a>
+        <a href="tools.html" class="block text-cyan-300">Tools</a>
+        <a href="scrims.html" class="block text-gray-300">Tournaments</a>
+        <a href="dashboard.html" class="block text-gray-300">Dashboard</a>
+        <div class="pt-3 flex gap-3">
+          <a href="login.html" class="flex-1 text-center py-2 border border-cyan-500/50 rounded-lg text-cyan-300">Login</a>
+          <a href="register.html" class="flex-1 text-center py-2 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg text-black font-bold">Register</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-24 pb-16 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-10">
+        <h1 class="text-4xl md:text-5xl font-black mb-3">Tools Catalog</h1>
+        <p class="text-gray-400">Select your game and explore available tools</p>
+      </div>
+
+      <!-- Search & Filter (client-side) -->
+      <div class="mb-8 flex flex-col sm:flex-row gap-4">
+        <input type="search" id="tool-search" placeholder="Search tools..." 
+               class="flex-1 px-4 py-3 rounded-xl bg-black/40 border border-cyan-500/30 text-sm focus:border-cyan-400 focus:outline-none"
+               aria-label="Search tools">
+        <select id="tool-filter" class="px-4 py-3 rounded-xl bg-black/40 border border-cyan-500/30 text-sm focus:border-cyan-400 focus:outline-none" aria-label="Filter by category">
+          <option value="all">All Categories</option>
+          <option value="freefire">Free Fire</option>
+          <option value="bgmi">BGMI</option>
+          <option value="tournament">Tournaments</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div id="tools-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Free Fire -->
+        <article class="card tool-card" data-category="freefire" data-name="free fire tools">
+          <div class="h-44 bg-gradient-to-br from-orange-600/30 to-pink-900/40 flex items-center justify-center text-5xl">🔥</div>
+          <div class="p-5">
+            <div class="flex gap-2 mb-2">
+              <span class="badge badge-hot">Popular</span>
+              <span class="text-xs text-gray-500">Free Fire</span>
+            </div>
+            <h2 class="text-xl font-bold text-orange-300 mb-1">Free Fire Tools</h2>
+            <p class="text-sm text-gray-400 mb-4 line-clamp-2">Hologram, configs, locations, push tools and more for Free Fire / Free Fire Max.</p>
+            <a href="ff.html" class="inline-block w-full text-center py-2.5 rounded-lg bg-gradient-to-r from-orange-500 to-pink-600 text-sm font-bold hover:opacity-90 transition">Open Tools</a>
+          </div>
+        </article>
+
+        <!-- BGMI -->
+        <article class="card tool-card" data-category="bgmi" data-name="bgmi tools">
+          <div class="h-44 bg-gradient-to-br from-cyan-600/30 to-teal-900/40 flex items-center justify-center text-5xl">💀</div>
+          <div class="p-5">
+            <div class="flex gap-2 mb-2">
+              <span class="badge badge-live">Live</span>
+              <span class="text-xs text-gray-500">BGMI</span>
+            </div>
+            <h2 class="text-xl font-bold text-cyan-300 mb-1">BGMI Tools</h2>
+            <p class="text-sm text-gray-400 mb-4 line-clamp-2">High FPS configs, OBB and optimization tools for Battlegrounds Mobile India.</p>
+            <a href="bgmi.html" class="inline-block w-full text-center py-2.5 rounded-lg bg-gradient-to-r from-cyan-500 to-teal-600 text-sm font-bold hover:opacity-90 transition">Open Tools</a>
+          </div>
+        </article>
+
+        <!-- Scrims / Tournaments -->
+        <article class="card tool-card" data-category="tournament" data-name="paid scrims tournaments">
+          <div class="h-44 bg-gradient-to-br from-red-600/30 to-orange-900/40 flex items-center justify-center text-5xl">🏆</div>
+          <div class="p-5">
+            <div class="flex gap-2 mb-2">
+              <span class="badge badge-tournament">Tournaments</span>
+            </div>
+            <h2 class="text-xl font-bold text-orange-300 mb-1">Paid Scrims</h2>
+            <p class="text-sm text-gray-400 mb-4 line-clamp-2">Daily & weekly paid tournaments for Free Fire and BGMI with cash prizes.</p>
+            <a href="scrims.html" class="inline-block w-full text-center py-2.5 rounded-lg bg-gradient-to-r from-orange-500 to-red-600 text-sm font-bold hover:opacity-90 transition">Join Now</a>
+          </div>
+        </article>
+
+        <!-- COD -->
+        <article class="card tool-card" data-category="other" data-name="call of duty mobile">
+          <div class="h-44 bg-gradient-to-br from-yellow-600/30 to-amber-900/40 flex items-center justify-center text-5xl">🎯</div>
+          <div class="p-5">
+            <div class="flex gap-2 mb-2">
+              <span class="text-xs text-gray-500">COD Mobile</span>
+            </div>
+            <h2 class="text-xl font-bold text-yellow-300 mb-1">Call of Duty</h2>
+            <p class="text-sm text-gray-400 mb-4 line-clamp-2">Tools and configs for Call of Duty Mobile.</p>
+            <a href="cod.html" class="inline-block w-full text-center py-2.5 rounded-lg bg-gradient-to-r from-yellow-500 to-amber-600 text-sm font-bold hover:opacity-90 transition">Open Tools</a>
+          </div>
+        </article>
+
+        <!-- Valorant -->
+        <article class="card tool-card" data-category="other" data-name="valorant mobile">
+          <div class="h-44 bg-gradient-to-br from-pink-600/30 to-fuchsia-900/40 flex items-center justify-center text-5xl">💜</div>
+          <div class="p-5">
+            <div class="flex gap-2 mb-2">
+              <span class="text-xs text-gray-500">Valorant</span>
+            </div>
+            <h2 class="text-xl font-bold text-pink-300 mb-1">Valorant Mobile</h2>
+            <p class="text-sm text-gray-400 mb-4 line-clamp-2">Tools and configs for Valorant Mobile.</p>
+            <a href="valorant.html" class="inline-block w-full text-center py-2.5 rounded-lg bg-gradient-to-r from-pink-500 to-fuchsia-600 text-sm font-bold hover:opacity-90 transition">Open Tools</a>
+          </div>
+        </article>
+
+        <!-- Apex -->
+        <article class="card tool-card" data-category="other" data-name="apex legends mobile">
+          <div class="h-44 bg-gradient-to-br from-red-600/30 to-rose-900/40 flex items-center justify-center text-5xl">⚡</div>
+          <div class="p-5">
+            <div class="flex gap-2 mb-2">
+              <span class="text-xs text-gray-500">Apex</span>
+            </div>
+            <h2 class="text-xl font-bold text-red-300 mb-1">Apex Legends</h2>
+            <p class="text-sm text-gray-400 mb-4 line-clamp-2">Coming tools for Apex Legends Mobile.</p>
+            <a href="apex.html" class="inline-block w-full text-center py-2.5 rounded-lg bg-gradient-to-r from-red-500 to-rose-600 text-sm font-bold hover:opacity-90 transition">Open Tools</a>
+          </div>
+        </article>
+      </div>
+
+      <p id="no-results" class="hidden text-center text-gray-500 mt-10">No tools match your search.</p>
+    </div>
+  </main>
+
+  <footer class="border-t border-cyan-500/20 py-8 text-center text-sm text-gray-600">
+    © 2026 VOID X HUB • <a href="index.html" class="hover:text-cyan-400">Home</a>
+  </footer>
+
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    const searchInput = document.getElementById('tool-search');
+    const filterSelect = document.getElementById('tool-filter');
+    const cards = document.querySelectorAll('.tool-card');
+    const noResults = document.getElementById('no-results');
+
+    function filterTools() {
+      const q = (searchInput.value || '').toLowerCase().trim();
+      const cat = filterSelect.value;
+      let visible = 0;
+
+      cards.forEach(card => {
+        const name = card.dataset.name || '';
+        const category = card.dataset.category || '';
+        const matchSearch = !q || name.includes(q);
+        const matchCat = cat === 'all' || category === cat;
+        const show = matchSearch && matchCat;
+        card.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+
+      noResults.classList.toggle('hidden', visible > 0);
+    }
+
+    searchInput.addEventListener('input', filterTools);
+    filterSelect.addEventListener('change', filterTools);
+  </script>
+</body>
+</html>
