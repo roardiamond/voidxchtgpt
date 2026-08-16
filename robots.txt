@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Private / sensitive areas
+Disallow: /dashboard.html
+Disallow: /admin.html
+Disallow: /admin-panel.html
+Disallow: /login.html
+Disallow: /register.html
+Disallow: /my-orders.html
+Disallow: /backend/
+
+Sitemap: https://voidxhub.in/sitemap.xml
