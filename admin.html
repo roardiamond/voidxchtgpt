@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin – VOID X HUB</title>
+  <meta name="robots" content="noindex, nofollow">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body class="bg-void text-gray-100 font-orbitron antialiased min-h-screen p-4 md:p-8">
+
+  <!-- Login -->
+  <div id="loginScreen" class="max-w-md mx-auto mt-16">
+    <div class="card p-8">
+      <h1 class="text-2xl font-black text-cyan-400 text-center tracking-widest mb-1">ADMIN</h1>
+      <p class="text-center text-gray-500 text-xs mb-6">VOID X HUB • Server-authorized only</p>
+      <div id="loginMsg" class="hidden mb-4 p-3 rounded-lg text-sm text-center" role="alert"></div>
+      <form id="adminLoginForm" class="space-y-4">
+        <div>
+          <label for="adminUser" class="block text-cyan-400 text-xs font-bold mb-2">Username</label>
+          <input type="text" id="adminUser" required autocomplete="username" class="input-field" placeholder="admin">
+        </div>
+        <div>
+          <label for="adminPass" class="block text-cyan-400 text-xs font-bold mb-2">Password</label>
+          <input type="password" id="adminPass" required autocomplete="current-password" class="input-field" placeholder="Password">
+        </div>
+        <button type="submit" class="btn-primary w-full">Login</button>
+      </form>
+      <p class="text-[10px] text-gray-600 mt-4 text-center">Admin access is verified by the backend. Frontend flags are not security.</p>
+    </div>
+  </div>
+
+  <!-- Dashboard -->
+  <div id="adminDash" class="hidden max-w-5xl mx-auto">
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
+      <div>
+        <h1 class="text-2xl md:text-3xl font-black text-cyan-400 tracking-widest">Admin Panel</h1>
+        <p class="text-gray-500 text-xs mt-1">1 ₹ = 2 VxH Cr • All actions require server auth</p>
+      </div>
+      <div class="flex gap-3 flex-wrap">
+        <button type="button" onclick="refreshAll()" class="px-4 py-2 border border-cyan-500/50 rounded-xl text-cyan-300 text-sm font-bold hover:bg-cyan-500/10 transition">Refresh</button>
+        <button type="button" onclick="logoutAdmin()" class="px-4 py-2 border border-red-500/50 rounded-xl text-red-400 text-sm font-bold hover:bg-red-500/10 transition">Logout</button>
+      </div>
+    </div>
+
+    <!-- Fulfill -->
+    <section class="card p-6 mb-6">
+      <h2 class="text-sm font-bold text-cyan-300 mb-4 tracking-wider">Fulfill Order</h2>
+      <div id="fulfillMsg" class="hidden mb-4 p-3 rounded-lg text-sm text-center" role="alert"></div>
+      <div class="grid sm:grid-cols-2 gap-4 mb-4">
+        <div>
+          <label for="fulfillCode" class="block text-xs text-gray-400 mb-2">Order Code</label>
+          <input type="text" id="fulfillCode" placeholder="VxH-XXXXXXXX" class="input-field">
+        </div>
+        <div>
+          <label for="fulfillLink" class="block text-xs text-gray-400 mb-2">Download Link</label>
+          <input type="url" id="fulfillLink" placeholder="https://..." class="input-field">
+        </div>
+      </div>
+      <div class="mb-4">
+        <label for="fulfillNote" class="block text-xs text-gray-400 mb-2">Note (optional)</label>
+        <input type="text" id="fulfillNote" placeholder="Password / instructions" class="input-field">
+      </div>
+      <button type="button" onclick="fulfillOrder()" class="btn-primary">Send Link to User</button>
+    </section>
+
+    <!-- Orders -->
+    <section class="card p-6 mb-6">
+      <h2 class="text-sm font-bold text-cyan-300 mb-4 tracking-wider">Recent Orders</h2>
+      <div id="ordersList" class="space-y-3 max-h-96 overflow-y-auto"></div>
+      <p id="noOrders" class="text-gray-500 text-center py-6 hidden text-sm">No orders yet</p>
+    </section>
+
+    <!-- Credits -->
+    <section class="card p-6 mb-6">
+      <h2 class="text-sm font-bold text-cyan-300 mb-4 tracking-wider">Add / Remove VxH Cr</h2>
+      <div id="addMsg" class="hidden mb-4 p-3 rounded-lg text-sm text-center" role="alert"></div>
+      <div class="grid sm:grid-cols-3 gap-4 items-end">
+        <div>
+          <label for="targetUser" class="block text-xs text-gray-400 mb-2">Username</label>
+          <input type="text" id="targetUser" placeholder="username" class="input-field">
+        </div>
+        <div>
+          <label for="creditAmount" class="block text-xs text-gray-400 mb-2">VxH Cr (+ / −)</label>
+          <input type="number" id="creditAmount" placeholder="500" class="input-field">
+        </div>
+        <button type="button" onclick="addCredits()" class="btn-primary">Update</button>
+      </div>
+    </section>
+
+    <!-- Users -->
+    <section class="card p-6">
+      <h2 class="text-sm font-bold text-cyan-300 mb-4 tracking-wider">Users</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="text-left text-gray-500 border-b border-gray-800">
+              <th class="pb-3 pr-4">ID</th>
+              <th class="pb-3 pr-4">Username</th>
+              <th class="pb-3 pr-4">VxH Cr</th>
+              <th class="pb-3 pr-4">Admin</th>
+              <th class="pb-3">Created</th>
+            </tr>
+          </thead>
+          <tbody id="usersTable"></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const API = "https://voidxhub-backend.onrender.com";
+
+    // UI hint only — real gate is server is_admin
+    if (localStorage.getItem("vxh_admin") === "1") showDash();
+
+    document.getElementById("adminLoginForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const msg = document.getElementById("loginMsg");
+      try {
+        const res = await fetch(API + "/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify({
+            username: document.getElementById("adminUser").value.trim(),
+            password: document.getElementById("adminPass").value
+          })
+        });
+        const data = await res.json();
+        if (data.success && data.user && data.user.is_admin) {
+          localStorage.setItem("vxh_admin", "1");
+          localStorage.setItem("vxh_user", JSON.stringify(data.user));
+          showDash();
+        } else {
+          msg.className = "mb-4 p-3 rounded-lg text-sm text-center bg-red-900/40 text-red-400 border border-red-500/50";
+          msg.textContent = data.success ? "Not an admin account" : (data.message || "Login failed");
+          msg.classList.remove("hidden");
+        }
+      } catch (err) {
+        msg.className = "mb-4 p-3 rounded-lg text-sm text-center bg-red-900/40 text-red-400 border border-red-500/50";
+        msg.textContent = "Server error / cold start. Wait ~30s and retry.";
+        msg.classList.remove("hidden");
+      }
+    });
+
+    function showDash() {
+      document.getElementById("loginScreen").classList.add("hidden");
+      document.getElementById("adminDash").classList.remove("hidden");
+      refreshAll();
+    }
+
+    function refreshAll() {
+      loadOrders();
+      loadUsers();
+    }
+
+    function logoutAdmin() {
+      localStorage.removeItem("vxh_admin");
+      localStorage.removeItem("vxh_user");
+      fetch(API + "/api/logout", { method: "POST", credentials: "include" }).catch(() => {});
+      location.reload();
+    }
+
+    function showMsg(elId, ok, text) {
+      const msg = document.getElementById(elId);
+      msg.className = ok
+        ? "mb-4 p-3 rounded-lg text-sm text-center bg-green-900/40 text-green-400 border border-green-500/50"
+        : "mb-4 p-3 rounded-lg text-sm text-center bg-red-900/40 text-red-400 border border-red-500/50";
+      msg.textContent = text;
+      msg.classList.remove("hidden");
+    }
+
+    async function loadOrders() {
+      try {
+        const res = await fetch(API + "/api/admin/orders", { credentials: "include" });
+        const data = await res.json();
+        const box = document.getElementById("ordersList");
+        box.innerHTML = "";
+        if (!data.success || !data.orders || !data.orders.length) {
+          document.getElementById("noOrders").classList.remove("hidden");
+          return;
+        }
+        document.getElementById("noOrders").classList.add("hidden");
+        data.orders.forEach(o => {
+          const statusColor = o.status === "delivered" ? "text-green-400" : "text-yellow-400";
+          const div = document.createElement("div");
+          div.className = "p-4 border border-gray-800 rounded-xl hover:border-cyan-500/40 cursor-pointer";
+          div.onclick = () => {
+            document.getElementById("fulfillCode").value = o.order_code || "";
+            if (o.download_link) document.getElementById("fulfillLink").value = o.download_link;
+          };
+          const tg = String(o.telegram || "").replace(/^@/, "");
+          div.innerHTML = `
+            <div>
+              <span class="text-cyan-300 font-bold text-sm">${o.order_code || "—"}</span>
+              <span class="${statusColor} text-xs ml-2 uppercase">${o.status || ""}</span>
+              <p class="text-xs text-gray-400 mt-1">@${tg} • ${String(o.tool || "").toUpperCase()} • ${String(o.plan_type || "").toUpperCase()} • ${String(o.brand || "").toUpperCase()}</p>
+              <p class="text-xs text-gray-600">${o.credits || 0} VxH Cr • ₹${o.price_inr || 0} • ${o.created_at || ""}</p>
+            </div>`;
+          box.appendChild(div);
+        });
+      } catch (e) {}
+    }
+
+    async function fulfillOrder() {
+      const order_code = document.getElementById("fulfillCode").value.trim();
+      const download_link = document.getElementById("fulfillLink").value.trim();
+      const admin_note = document.getElementById("fulfillNote").value.trim();
+      if (!order_code || !download_link) {
+        showMsg("fulfillMsg", false, "Order code + download link required");
+        return;
+      }
+      try {
+        const res = await fetch(API + "/api/admin/orders/fulfill", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify({ order_code, download_link, admin_note })
+        });
+        const data = await res.json();
+        showMsg("fulfillMsg", !!data.success, data.message || (data.success ? "Done" : "Failed"));
+        if (data.success) {
+          document.getElementById("fulfillLink").value = "";
+          document.getElementById("fulfillNote").value = "";
+          loadOrders();
+        }
+      } catch (e) {
+        showMsg("fulfillMsg", false, "Error");
+      }
+    }
+
+    async function addCredits() {
+      const username = document.getElementById("targetUser").value.trim().toLowerCase();
+      const credits = parseInt(document.getElementById("creditAmount").value, 10);
+      if (!username || isNaN(credits) || credits === 0) {
+        showMsg("addMsg", false, "Enter username and non-zero VxH Cr");
+        return;
+      }
+      try {
+        const res = await fetch(API + "/api/admin/add-credits", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify({ username, credits })
+        });
+        const data = await res.json();
+        showMsg("addMsg", !!data.success,
+          data.success ? ((data.message || "Updated") + " | Balance: " + data.new_balance + " VxH Cr") : (data.message || "Failed"));
+        if (data.success) {
+          document.getElementById("creditAmount").value = "";
+          loadUsers();
+        }
+      } catch (err) {
+        showMsg("addMsg", false, "Error");
+      }
+    }
+
+    async function loadUsers() {
+      try {
+        const res = await fetch(API + "/api/admin/users", { credentials: "include" });
+        const data = await res.json();
+        const tbody = document.getElementById("usersTable");
+        tbody.innerHTML = "";
+        (data.users || []).forEach(u => {
+          const tr = document.createElement("tr");
+          tr.className = "border-b border-gray-900";
+          tr.innerHTML = `
+            <td class="py-3 pr-4 text-gray-500">${u.id}</td>
+            <td class="py-3 pr-4 font-bold text-cyan-300">${u.username}</td>
+            <td class="py-3 pr-4 text-pink-400 font-bold">${u.credits} VxH Cr</td>
+            <td class="py-3 pr-4">${u.is_admin ? "Yes" : "—"}</td>
+            <td class="py-3 text-gray-600 text-xs">${u.created_at || "—"}</td>`;
+          tbody.appendChild(tr);
+        });
+      } catch (err) {}
+    }
+  </script>
+</body>
+</html>
