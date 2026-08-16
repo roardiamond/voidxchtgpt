@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tournaments & Paid Scrims – VOID X HUB</title>
+  <meta name="description" content="Join paid Free Fire and BGMI scrims and tournaments on VOID X HUB. Real cash prizes, daily slots.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://voidxhub.in/scrims.html">
+  <meta property="og:title" content="Tournaments & Paid Scrims – VOID X HUB">
+  <meta property="og:description" content="Paid Free Fire and BGMI scrims with real cash prizes.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body class="bg-void text-gray-100 font-orbitron antialiased min-h-screen">
+
+  <!-- Navbar -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-void/90 backdrop-blur-md border-b border-cyan-500/20">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
+      <a href="index.html" class="text-xl font-black tracking-wider text-cyan-400">VOID<span class="text-purple-400">X</span>HUB</a>
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="index.html" class="text-gray-300 hover:text-cyan-300 transition">Home</a>
+        <a href="tools.html" class="text-gray-300 hover:text-cyan-300 transition">Tools</a>
+        <a href="scrims.html" class="text-cyan-300">Tournaments</a>
+        <a href="dashboard.html" id="nav-dashboard" class="hidden text-gray-300 hover:text-cyan-300 transition">Dashboard</a>
+        <a href="login.html" id="nav-login" class="px-4 py-2 rounded-lg border border-cyan-500/50 text-cyan-300 hover:bg-cyan-500/10 transition">Login</a>
+        <a href="register.html" id="nav-register" class="px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-purple-600 text-black font-bold hover:opacity-90 transition">Register</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden p-2 text-cyan-400" aria-label="Open menu" aria-expanded="false">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </nav>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-cyan-500/20 bg-void/95">
+      <div class="px-4 py-4 space-y-3 text-sm">
+        <a href="index.html" class="block text-gray-300">Home</a>
+        <a href="tools.html" class="block text-gray-300">Tools</a>
+        <a href="scrims.html" class="block text-cyan-300">Tournaments</a>
+        <a href="dashboard.html" class="block text-gray-300">Dashboard</a>
+        <div class="pt-3 flex gap-3">
+          <a href="login.html" class="flex-1 text-center py-2 border border-cyan-500/50 rounded-lg text-cyan-300">Login</a>
+          <a href="register.html" class="flex-1 text-center py-2 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg text-black font-bold">Register</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-24 pb-16 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <div class="inline-block mb-4 px-4 py-1.5 rounded-full text-xs font-bold tracking-wider bg-red-500/15 border border-red-400/40 text-red-300">
+          TOURNAMENT HUB
+        </div>
+        <h1 class="text-4xl md:text-5xl font-black mb-3">Paid Scrims & Tournaments</h1>
+        <p class="text-gray-400 max-w-xl mx-auto">Daily and weekly paid events for Free Fire and BGMI with real cash prizes.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+
+        <!-- Free Fire -->
+        <article class="card overflow-hidden group">
+          <div class="relative h-64 sm:h-72">
+            <img src="images/ff-tournament.jpg" alt="Free Fire Paid Scrims" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+            <div class="hidden absolute inset-0 bg-gradient-to-br from-pink-900/80 to-purple-950 items-center justify-center text-6xl">🔥</div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <h2 class="text-3xl font-black text-pink-300 mb-1">Free Fire</h2>
+              <p class="text-white font-bold mb-1">Paid Scrims & Tournaments</p>
+              <p class="text-emerald-400 text-sm mb-4">₹500 – ₹5000+ prizes • Daily slots</p>
+              <a href="ffscrim.html" class="inline-block w-full text-center py-3.5 rounded-xl bg-gradient-to-r from-pink-600 to-purple-600 font-bold hover:opacity-90 transition">
+                Join Free Fire Scrims
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- BGMI -->
+        <article class="card overflow-hidden relative">
+          <div class="absolute top-4 left-1/2 -translate-x-1/2 z-10 px-4 py-1.5 rounded-full bg-black/90 border-2 border-red-400 text-red-300 text-xs font-bold tracking-wider">
+            COMING SOON
+          </div>
+          <div class="relative h-64 sm:h-72">
+            <img src="images/bgmi-tournament.jpg" alt="BGMI Paid Scrims" class="w-full h-full object-cover grayscale opacity-80" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+            <div class="hidden absolute inset-0 bg-gradient-to-br from-cyan-900/80 to-teal-950 items-center justify-center text-6xl">💀</div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <h2 class="text-3xl font-black text-cyan-300 mb-1">BGMI</h2>
+              <p class="text-white font-bold mb-1">Paid Scrims & Tournaments</p>
+              <p class="text-emerald-400 text-sm mb-4">₹1000 – ₹10000+ prizes • Daily slots</p>
+              <button disabled class="w-full py-3.5 rounded-xl bg-gray-700 text-gray-400 font-bold cursor-not-allowed">
+                Coming Soon
+              </button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="mt-12 text-center text-sm text-gray-500">
+        <p>Room IDs shared after entry confirmation. Follow rules and fair play.</p>
+        <p class="mt-2">Need help? <a href="https://t.me/Voidxhubsupport_bot" target="_blank" rel="noopener" class="text-cyan-400 hover:underline">Support Bot</a></p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-t border-cyan-500/20 py-8 text-center text-sm text-gray-600">
+    © 2026 VOID X HUB • <a href="index.html" class="hover:text-cyan-400">Home</a>
+  </footer>
+
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

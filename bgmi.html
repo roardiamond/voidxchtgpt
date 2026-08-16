@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BGMI Tools – VOID X HUB</title>
+  <meta name="description" content="BGMI high FPS configs, OBB and optimization tools on VOID X HUB.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://voidxhub.in/bgmi.html">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body class="bg-void text-gray-100 font-orbitron antialiased min-h-screen">
+
+  <header class="fixed top-0 left-0 right-0 z-50 bg-void/90 backdrop-blur-md border-b border-cyan-500/20">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="index.html" class="text-xl font-black tracking-wider text-cyan-400">VOID<span class="text-purple-400">X</span>HUB</a>
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="index.html" class="text-gray-300 hover:text-cyan-300">Home</a>
+        <a href="tools.html" class="text-cyan-300">Tools</a>
+        <a href="scrims.html" class="text-gray-300 hover:text-cyan-300">Tournaments</a>
+        <a href="login.html" id="nav-login" class="px-4 py-2 rounded-lg border border-cyan-500/50 text-cyan-300">Login</a>
+        <a href="register.html" id="nav-register" class="px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-purple-600 text-black font-bold">Register</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden p-2 text-cyan-400" aria-label="Open menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </nav>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-cyan-500/20 bg-void/95 px-4 py-4 space-y-3 text-sm">
+      <a href="index.html" class="block text-gray-300">Home</a>
+      <a href="tools.html" class="block text-cyan-300">Tools</a>
+      <a href="scrims.html" class="block text-gray-300">Tournaments</a>
+    </div>
+  </header>
+
+  <main class="pt-24 pb-16 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <h1 class="text-4xl md:text-5xl font-black text-cyan-300 mb-3">BGMI Tools</h1>
+      <p class="text-gray-400 mb-10">High FPS configs, OBB and optimization tools for Battlegrounds Mobile India.</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
+        <article class="card p-6">
+          <div class="h-32 mb-4 rounded-lg overflow-hidden bg-gradient-to-br from-cyan-800/40 to-teal-900/40 flex items-center justify-center">
+            <img src="images/bgmi.jpg" alt="BGMI" class="w-full h-full object-cover" onerror="this.style.display='none'">
+          </div>
+          <h2 class="text-xl font-bold text-cyan-300 mb-2">High FPS Config</h2>
+          <p class="text-sm text-gray-400 mb-4">Optimized settings for smoother gameplay.</p>
+          <a href="bgmifps.html" class="inline-block px-5 py-2.5 rounded-lg bg-gradient-to-r from-cyan-500 to-teal-600 text-sm font-bold hover:opacity-90">Open</a>
+        </article>
+
+        <article class="card p-6">
+          <div class="h-32 mb-4 rounded-lg overflow-hidden bg-gradient-to-br from-teal-800/40 to-cyan-900/40 flex items-center justify-center text-4xl">⚙️</div>
+          <h2 class="text-xl font-bold text-cyan-300 mb-2">More Tools</h2>
+          <p class="text-sm text-gray-400 mb-4">Additional BGMI tools will appear here.</p>
+          <span class="inline-block px-5 py-2.5 rounded-lg bg-gray-700 text-gray-400 text-sm font-bold">Coming Soon</span>
+        </article>
+      </div>
+
+      <div class="mt-12">
+        <a href="tools.html" class="text-sm text-gray-400 hover:text-cyan-300">← Back to Tools</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-t border-cyan-500/20 py-8 text-center text-sm text-gray-600">© 2026 VOID X HUB</footer>
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
